@@ -14,7 +14,7 @@ HELP.md
 /out/
 
 # Application properties (if sensitive)
-/application.properties
+src/main/resources/application.properties
 
 # IntelliJ IDEA
 .idea/
@@ -47,3 +47,4 @@ nbdist/
 # OS generated files
 .DS_Store
 Thumbs.db
+
