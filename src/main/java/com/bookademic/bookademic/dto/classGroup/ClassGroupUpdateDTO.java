@@ -48,7 +48,7 @@ public class ClassGroupUpdateDTO {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED
     )
     @Pattern(
-            regexp = "^\\d+$",
+            regexp = "^[1-9]\\d*$",
             message = "Student count must be a numeric value"
     )
     private Integer studentCount;
@@ -59,7 +59,7 @@ public class ClassGroupUpdateDTO {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED
     )
     @Pattern(
-            regexp = "^\\d+$",
+            regexp = "^[1-9]\\d*$",
             message = "Professor ID must be a numeric value"
     )
     private Long professorId;

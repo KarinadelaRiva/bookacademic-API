@@ -45,16 +45,6 @@ public class Event {
     private Integer maxParticipants = 0;
 
     @Column(
-            nullable = false
-    )
-    private LocalDateTime startDateTime;
-
-    @Column(
-            nullable = false
-    )
-    private LocalDateTime endDateTime;
-
-    @Column(
             nullable = false,
             columnDefinition = "BOOLEAN DEFAULT TRUE"
     )

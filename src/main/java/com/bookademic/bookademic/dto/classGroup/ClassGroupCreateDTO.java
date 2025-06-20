@@ -38,7 +38,7 @@ public class ClassGroupCreateDTO {
     private String name;
 
     @Schema(
-            description = "Indicantes count of students in the class group.",
+            description = "Number of students in the class group.",
             example = "30",
             requiredMode = Schema.RequiredMode.REQUIRED
     )
@@ -55,8 +55,8 @@ public class ClassGroupCreateDTO {
             requiredMode = Schema.RequiredMode.REQUIRED
     )
     @Pattern(
-            regexp = "^\\d+$",
-            message = "Professor ID must be a numeric value"
+            regexp = "^[1-9]\\d*$",
+            message = "Professor ID must be a numeric positive value"
     )
     @NotNull(message = "Professor ID is required")
     private Long professorId;
@@ -67,8 +67,8 @@ public class ClassGroupCreateDTO {
             requiredMode = Schema.RequiredMode.REQUIRED
     )
     @Pattern(
-            regexp = "^\\d+$",
-            message = "Subject ID must be a numeric value"
+            regexp = "^[1-9]\\d*$",
+            message = "Subject ID must be a numeric positive value"
     )
     @NotNull(message = "Subject ID is required")
     private Long subjectId;
