@@ -1,6 +1,5 @@
 package com.bookademic.bookademic.dto.subject;
 
-import com.bookademic.bookademic.dto.degreeProgram.DegreeProgramResponseResumeDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -11,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Builder
-public class SubjectResponseAdminDTO {
+public class SubjectResponseUserDTO {
 
     @Schema(
             description = "Unique identifier of the subject",
@@ -44,15 +43,8 @@ public class SubjectResponseAdminDTO {
     private Boolean requiresWorkshop;
 
     @Schema(
-            description = "Indicates if the subject is active",
-            example = "true"
+            description = "List of degree programs associated with the subject",
+            example = "[\"CS1001 - Computer Science\", \"IT1256 - Information Technology\"]"
     )
-    private Boolean active;
-
-    @Schema(
-            description = "List of degree programs associated with the subject"
-    )
-    private List<DegreeProgramResponseResumeDTO> degreePrograms;
-
-
+    private List<String> degreePrograms;
 }

@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,4 +38,18 @@ public class DegreeProgramCreateDTO {
     )
     @Size(max = 50, message = "Name cannot exceed 50 characters")
     private String name;
+
+    @Schema(
+            description = "List of subject IDs to be associated with the degree program.",
+            example = "[1, 2, 3]",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED
+    )
+    private List<Long> subjectsIds;
+
+    @Schema(
+            description = "List of subject codes to be associated with the degree program.",
+            example = "[\"CS1001\", \"MT2002\"]",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED
+    )
+    private List<String> subjectsCodes;
 }
