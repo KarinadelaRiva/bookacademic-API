@@ -23,14 +23,13 @@ public class SubjectMapper {
     }
 
     public SubjectResponseAdminDTO toAdminDTO(Subject entity){
-        String s = entity.getActive() == true ? "true" : "false";
         return SubjectResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
                 .name(entity.getName())
                 .requiresLab(entity.getRequiresLab())
                 .requiresWorkshop(entity.getRequiresWorkshop())
-                .isActive(s)
+                .isActive(entity.getActive())
                 .degreePrograms(entity.getDegreePrograms().stream()
                         .map(degreeProgramMapper::toResumeDTO)
                         .toList())

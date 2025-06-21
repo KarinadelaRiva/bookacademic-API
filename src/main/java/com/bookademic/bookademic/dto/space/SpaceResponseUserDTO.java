@@ -48,11 +48,11 @@ public abstract class SpaceResponseUserDTO {
             description = "Indicates if the space has projector",
             example = "true"
     )
-    private String hasProjector;
+    private Boolean hasProjector;
 
     @Schema(
             description = "Indicates if the space has TV",
             example = "false"
     )
-    private String hasTV;
+    private Boolean hasTV;
 }

@@ -18,11 +18,11 @@ public class MultipurposeRoomResponseUserDTO extends SpaceResponseUserDTO {
         description = "Indicates if the room has audio-visual equipment",
         example = "true"
     )
-    private String hasAudioVisualEquipment;
+    private Boolean hasAudioVisualEquipment;
 
     @Schema(
         description = "Indicates if the room has stage",
         example = "false"
     )
-    private String hasStage;
+    private Boolean hasStage;
 }

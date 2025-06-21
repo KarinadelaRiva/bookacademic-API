@@ -58,5 +58,5 @@ public class EventResponseAdminDTO {
             description = "Indicates if the event is active",
             example = "true"
     )
-    private String isActive;
+    private Boolean isActive;
 }
