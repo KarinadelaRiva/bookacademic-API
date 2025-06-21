@@ -18,7 +18,7 @@ public abstract class SpaceResponseAdminDTO {
             description = "Unique identifier of the space",
             example = "12345"
     )
-    private String id;
+    private Long id;
 
     @Schema(
             description = "Code of the space",

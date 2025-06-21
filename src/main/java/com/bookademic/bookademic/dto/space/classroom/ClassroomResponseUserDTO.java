@@ -1,6 +1,5 @@
 package com.bookademic.bookademic.dto.space.classroom;
 
-import com.bookademic.bookademic.dto.space.SpaceCreateDTO;
 import com.bookademic.bookademic.dto.space.SpaceResponseUserDTO;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -11,5 +10,5 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
-public class ClassroomCreateResponseUserDTO extends SpaceResponseUserDTO {
+public class ClassroomResponseUserDTO extends SpaceResponseUserDTO {
 }
