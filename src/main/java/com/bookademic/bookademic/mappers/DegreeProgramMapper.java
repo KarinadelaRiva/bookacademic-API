@@ -22,12 +22,11 @@ public class DegreeProgramMapper {
     }
 
     public DegreeProgramResponseAdminDTO toAdminDto(DegreeProgram entity){
-        String s = entity.getActive() == true ? "true" : "false";
         return DegreeProgramResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
                 .name(entity.getName())
-                .isActive(s)
+                .isActive(entity.getActive())
                 .subjects(entity.getSubjects().stream()
                         .map(subjectMapper::toResumeDTO)
                         .toList())

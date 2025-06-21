@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class EventMapper {
 
     public EventResponseAdminDTO toAdminDTO(Event entity) {
-        String s = entity.getActive() ? "true" : "false";
         return EventResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
@@ -21,7 +20,7 @@ public class EventMapper {
                 .organizerName(entity.getOrganizer().getFirstName() + " " + entity.getOrganizer().getLastName())
                 .organizerEmail(entity.getOrganizer().getEmail())
                 .maxParticipants(entity.getMaxParticipants())
-                .isActive(s)
+                .isActive(entity.getActive())
                 .build();
     }
 

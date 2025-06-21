@@ -24,7 +24,7 @@ public class LabResponseUserDTO extends SpaceResponseUserDTO {
         description = "Indicates if the lab has special equipment or not",
         example = "true"
     )
-    private String hasSpecialEquipment;
+    private Boolean hasSpecialEquipment;
 
 
 }

@@ -42,7 +42,7 @@ public abstract class SpaceResponseAdminDTO {
             description = "Indicates if the space is active",
             example = "true"
     )
-    private String isActive;
+    private Boolean isActive;
 
     @Schema(
             description = "Capacity of the space",
@@ -54,11 +54,11 @@ public abstract class SpaceResponseAdminDTO {
             description = "Indicates if the space has projector",
             example = "true"
     )
-    private String hasProjector;
+    private Boolean hasProjector;
 
     @Schema(
             description = "Indicates if the space has TV",
             example = "false"
     )
-    private String hasTV;
+    private Boolean hasTV;
 }

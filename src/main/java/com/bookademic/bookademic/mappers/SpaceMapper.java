@@ -20,59 +20,60 @@ import org.springframework.stereotype.Component;
 public class SpaceMapper {
 
     public SpaceResponseAdminDTO toAdminDTO(Space entity) {
+        String type = entity.getClass().getSimpleName();
         switch (entity){
             case Lab lab -> {
                 return LabResponseAdminDTO.builder()
                         .id(lab.getId())
                         .code(lab.getCode())
-                        .type(entity.getClass().getSimpleName())
+                        .type(type)
                         .name(lab.getName())
                         .capacity(lab.getCapacity())
-                        .hasProjector(lab.getHasProjector() ? "true" : "false")
-                        .hasTV(lab.getHasTV() ? "true" : "false")
-                        .isActive(lab.getActive() ? "true" : "false")
+                        .hasProjector(lab.getHasProjector())
+                        .hasTV(lab.getHasTV())
+                        .isActive(lab.getActive())
                         .numberOfComputers(lab.getNumberOfComputers())
-                        .hasSpecialEquipment(lab.getHasSpecialEquipment().toString())
+                        .hasSpecialEquipment(lab.getHasSpecialEquipment())
                         .build();
             }
             case Workshop workshop -> {
                 return WorkshopResponseAdminDTO.builder()
                         .id(workshop.getId())
                         .code(workshop.getCode())
-                        .type(entity.getClass().getSimpleName())
+                        .type(type)
                         .name(workshop.getName())
                         .capacity(workshop.getCapacity())
-                        .hasProjector(workshop.getHasProjector() ? "true" : "false")
-                        .hasTV(workshop.getHasTV() ? "true" : "false")
+                        .hasProjector(workshop.getHasProjector())
+                        .hasTV(workshop.getHasTV())
                         .numberOfWorkstations(workshop.getNumberOfWorkstations())
-                        .hasTools(workshop.getHasTools() ? "true" : "false")
-                        .isActive(workshop.getActive() ? "true" : "false")
+                        .hasTools(workshop.getHasTools())
+                        .isActive(workshop.getActive())
                         .build();
             }
             case MultipurposeRoom multi -> {
                 return MultipurposeRoomResponseAdminDTO.builder()
                         .id(multi.getId())
                         .code(multi.getCode())
-                        .type(entity.getClass().getSimpleName())
+                        .type(type)
                         .name(multi.getName())
                         .capacity(multi.getCapacity())
-                        .hasProjector(multi.getHasProjector() ? "true" : "false")
-                        .hasTV(multi.getHasTV() ? "true" : "false")
-                        .hasStage(multi.getHasStage() ? "true" : "false")
-                        .hasAudioVisualEquipment(multi.getHasAudioVisualEquipment() ? "true" : "false")
-                        .isActive(multi.getActive() ? "true" : "false")
+                        .hasProjector(multi.getHasProjector())
+                        .hasTV(multi.getHasTV())
+                        .hasStage(multi.getHasStage())
+                        .hasAudioVisualEquipment(multi.getHasAudioVisualEquipment())
+                        .isActive(multi.getActive())
                         .build();
             }
             case Classroom classroom -> {
                 return ClassroomResponseAdminDTO.builder()
                         .id(classroom.getId())
                         .code(classroom.getCode())
-                        .type(entity.getClass().getSimpleName())
+                        .type(type)
                         .name(classroom.getName())
                         .capacity(classroom.getCapacity())
-                        .hasProjector(classroom.getHasProjector() ? "true" : "false")
-                        .hasTV(classroom.getHasTV() ? "true" : "false")
-                        .isActive(classroom.getActive() ? "true" : "false")
+                        .hasProjector(classroom.getHasProjector())
+                        .hasTV(classroom.getHasTV())
+                        .isActive(classroom.getActive())
                         .build();
             }
             default -> throw new IllegalArgumentException("Tipo de espacio desconocido");
@@ -80,42 +81,43 @@ public class SpaceMapper {
     }
 
     public SpaceResponseUserDTO toUserDTO(Space entity) {
+        String type = entity.getClass().getSimpleName();
         return switch (entity) {
             case Lab lab -> LabResponseUserDTO.builder()
                     .id(lab.getId())
                     .code(lab.getCode())
-                    .type(entity.getClass().getSimpleName())
+                    .type(type)
                     .name(lab.getName())
                     .capacity(lab.getCapacity())
-                    .hasProjector(lab.getHasProjector() ? "true" : "false")
-                    .hasTV(lab.getHasTV() ? "true" : "false")
+                    .hasProjector(lab.getHasProjector())
+                    .hasTV(lab.getHasTV())
                     .build();
             case Workshop workshop -> WorkshopResponseUserDTO.builder()
                     .id(workshop.getId())
                     .code(workshop.getCode())
-                    .type(entity.getClass().getSimpleName())
+                    .type(type)
                     .name(workshop.getName())
                     .capacity(workshop.getCapacity())
-                    .hasProjector(workshop.getHasProjector() ? "true" : "false")
-                    .hasTV(workshop.getHasTV() ? "true" : "false")
+                    .hasProjector(workshop.getHasProjector())
+                    .hasTV(workshop.getHasTV())
                     .build();
             case MultipurposeRoom multi -> MultipurposeRoomResponseUserDTO.builder()
                     .id(multi.getId())
                     .code(multi.getCode())
-                    .type(entity.getClass().getSimpleName())
+                    .type(type)
                     .name(multi.getName())
                     .capacity(multi.getCapacity())
-                    .hasProjector(multi.getHasProjector() ? "true" : "false")
-                    .hasTV(multi.getHasTV() ? "true" : "false")
+                    .hasProjector(multi.getHasProjector())
+                    .hasTV(multi.getHasTV())
                     .build();
             case Classroom classroom -> ClassroomResponseUserDTO.builder()
                     .id(classroom.getId())
                     .code(classroom.getCode())
-                    .type(entity.getClass().getSimpleName())
+                    .type(type)
                     .name(classroom.getName())
                     .capacity(classroom.getCapacity())
-                    .hasProjector(classroom.getHasProjector() ? "true" : "false")
-                    .hasTV(classroom.getHasTV() ? "true" : "false")
+                    .hasProjector(classroom.getHasProjector())
+                    .hasTV(classroom.getHasTV())
                     .build();
             default -> throw new IllegalArgumentException("Tipo de espacio desconocido");
         };

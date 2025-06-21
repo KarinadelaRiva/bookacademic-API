@@ -25,6 +25,6 @@ public class WorkshopResponseAdminDTO extends SpaceResponseAdminDTO {
         description = "Indicates if the workshop has tools or not",
         example = "true"
     )
-    private String hasTools;
+    private Boolean hasTools;
 
 }

@@ -47,7 +47,7 @@ public class SubjectResponseAdminDTO {
             description = "Indicates if the subject is active",
             example = "true"
     )
-    private String isActive;
+    private Boolean isActive;
 
     @Schema(
             description = "List of degree programs associated with the subject"

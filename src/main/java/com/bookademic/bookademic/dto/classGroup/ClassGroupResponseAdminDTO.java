@@ -38,7 +38,7 @@ public class ClassGroupResponseAdminDTO {
             description = "Indicates if the class group is active",
             example = "true"
     )
-    private String isActive;
+    private Boolean isActive;
 
     @Schema(
             description = "Code of the subject associated with the class group",

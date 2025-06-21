@@ -13,13 +13,12 @@ import org.springframework.stereotype.Component;
 public class ClassGroupMapper {
 
     public ClassGroupResponseAdminDTO toAdminDTO(ClassGroup entity) {
-        String s = entity.getActive() ? "true" : "false";
         return ClassGroupResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
                 .name(entity.getName())
                 .studentCount(entity.getStudentCount())
-                .isActive(s)
+                .isActive(entity.getActive())
                 .subjectCode(entity.getSubject().getCode())
                 .subjectName(entity.getSubject().getName())
                 .professorName(entity.getProfessor().getFirstName() + " " + entity.getProfessor().getLastName())
