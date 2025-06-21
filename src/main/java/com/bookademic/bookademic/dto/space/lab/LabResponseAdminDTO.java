@@ -1,0 +1,31 @@
+package com.bookademic.bookademic.dto.space.lab;
+
+import com.bookademic.bookademic.dto.space.SpaceCreateDTO;
+import com.bookademic.bookademic.dto.space.SpaceResponseAdminDTO;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Pattern;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(callSuper = true)
+@SuperBuilder
+public class LabResponseAdminDTO extends SpaceResponseAdminDTO {
+
+    @Schema(
+        description = "Number of computers in the lab",
+        example = "30"
+    )
+    private Integer numberOfComputers;
+
+    @Schema(
+        description = "Indicates if the lab has special equipment or not",
+        example = "true"
+    )
+    private String hasSpecialEquipment;
+
+
+}

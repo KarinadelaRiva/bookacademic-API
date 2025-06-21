@@ -1,5 +1,6 @@
-package com.bookademic.bookademic.dto.space;
+package com.bookademic.bookademic.dto.space.multipurposeRoom;
 
+import com.bookademic.bookademic.dto.space.SpaceCreateDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -10,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
-public class MultipurposeRoomCreateDTO extends SpaceCreateDTO{
+public class MultipurposeRoomCreateDTO extends SpaceCreateDTO {
 
     @Schema(
         description = "Indicates if the room has audio-visual equipment",

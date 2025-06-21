@@ -1,5 +1,6 @@
-package com.bookademic.bookademic.dto.space;
+package com.bookademic.bookademic.dto.space.lab;
 
+import com.bookademic.bookademic.dto.space.SpaceUpdateDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
@@ -11,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
-public class LabUpdateDTO extends SpaceUpdateDTO{
+public class LabUpdateDTO extends SpaceUpdateDTO {
 
     @Schema(
             description = "Number of computers in the lab",

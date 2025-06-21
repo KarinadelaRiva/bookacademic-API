@@ -1,5 +1,7 @@
-package com.bookademic.bookademic.dto.space;
+package com.bookademic.bookademic.dto.space.multipurposeRoom;
 
+import com.bookademic.bookademic.dto.space.SpaceCreateDTO;
+import com.bookademic.bookademic.dto.space.SpaceResponseAdminDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -10,19 +12,17 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
-public class MultipurposeRoomUpdateDTO extends SpaceUpdateDTO{
+public class MultipurposeRoomResponseAdminDTO extends SpaceResponseAdminDTO {
 
     @Schema(
         description = "Indicates if the room has audio-visual equipment",
-        example = "true",
-        requiredMode = Schema.RequiredMode.NOT_REQUIRED
+        example = "true"
     )
-    private Boolean hasAudioVisualEquipment = false;
+    private String hasAudioVisualEquipment;
 
     @Schema(
         description = "Indicates if the room has stage",
-        example = "false",
-        requiredMode = Schema.RequiredMode.NOT_REQUIRED
+        example = "false"
     )
-    private Boolean hasStage = false;
+    private String hasStage;
 }
