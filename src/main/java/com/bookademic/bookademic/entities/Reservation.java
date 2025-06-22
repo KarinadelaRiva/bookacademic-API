@@ -51,6 +51,11 @@ public abstract class Reservation {
     )
     private LocalTime endTime;
 
+    @Column(
+            nullable = false
+    )
+    private Boolean active = true;
+
     @ManyToOne(
             fetch = FetchType.LAZY
     )

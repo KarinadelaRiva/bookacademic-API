@@ -27,6 +27,13 @@ public class Role {
     private String name;
 
     @Column(
+            nullable = false,
+            length = 6,
+            unique = true
+    )
+    private String code;
+
+    @Column(
             length = 300
     )
     private String description;

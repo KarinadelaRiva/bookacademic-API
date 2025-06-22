@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Builder
-public abstract class SpaceResponseResumeDTO {
+public class SpaceResponseResumeDTO {
 
     @Schema(
             description = "Unique identifier of the space",
