@@ -1,6 +1,5 @@
 package com.bookademic.bookademic.dto.space.lab;
 
-import com.bookademic.bookademic.dto.space.SpaceResponseAdminDTO;
 import com.bookademic.bookademic.dto.space.SpaceResponseUserDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;

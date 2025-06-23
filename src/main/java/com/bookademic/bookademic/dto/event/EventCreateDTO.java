@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor

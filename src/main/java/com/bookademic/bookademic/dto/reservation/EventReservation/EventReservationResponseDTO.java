@@ -1,7 +1,6 @@
 package com.bookademic.bookademic.dto.reservation.EventReservation;
 
 import com.bookademic.bookademic.dto.event.EventResponseResumeDTO;
-import com.bookademic.bookademic.dto.request.RequestResponseDTO;
 import com.bookademic.bookademic.dto.reservation.ReservationResponseDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;

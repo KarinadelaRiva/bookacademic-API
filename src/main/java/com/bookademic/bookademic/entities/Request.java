@@ -2,7 +2,6 @@ package com.bookademic.bookademic.entities;
 
 import com.bookademic.bookademic.enums.RequestState;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -55,8 +54,7 @@ public abstract class Request {
     )
     @JoinColumn(
             name = "original_reservation_id",
-            referencedColumnName = "id",
-            nullable = true
+            referencedColumnName = "id"
     )
     private Reservation originalReservation;
 

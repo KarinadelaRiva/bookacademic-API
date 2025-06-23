@@ -20,7 +20,6 @@ public class ClassGroup {
     private Long id;
 
     @Column(
-            nullable = true,
             unique = true,
             length = 6
     )

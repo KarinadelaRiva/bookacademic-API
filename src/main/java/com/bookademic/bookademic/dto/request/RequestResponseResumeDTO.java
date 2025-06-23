@@ -1,17 +1,10 @@
 package com.bookademic.bookademic.dto.request;
 
-import com.bookademic.bookademic.dto.reservation.ReservationResponseResumeDTO;
-import com.bookademic.bookademic.dto.space.SpaceResponseResumeDTO;
-import com.bookademic.bookademic.dto.user.UserResponseResumeDTO;
 import com.bookademic.bookademic.enums.RequestState;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor

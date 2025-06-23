@@ -3,8 +3,6 @@ package com.bookademic.bookademic.dto.event;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

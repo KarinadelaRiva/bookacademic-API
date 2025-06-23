@@ -27,7 +27,6 @@ public class Subject {
     private String name;
 
     @Column(
-            nullable = true,
             unique = true,
             length = 6
     )

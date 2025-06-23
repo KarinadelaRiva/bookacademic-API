@@ -1,7 +1,6 @@
 package com.bookademic.bookademic.dto.reservation;
 
 import com.bookademic.bookademic.dto.space.SpaceResponseResumeDTO;
-import com.bookademic.bookademic.dto.user.UserResponseResumeDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 

@@ -21,7 +21,6 @@ public class DegreeProgram {
     private Long id;
 
     @Column(
-            nullable = true,
             unique = true,
             length = 6
     )

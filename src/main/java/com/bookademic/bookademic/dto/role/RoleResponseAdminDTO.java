@@ -2,8 +2,6 @@ package com.bookademic.bookademic.dto.role;
 
 import com.bookademic.bookademic.enums.Permission;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;

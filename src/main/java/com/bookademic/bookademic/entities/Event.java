@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -20,7 +19,6 @@ public class Event {
     private Long id;
 
     @Column(
-            nullable = true,
             unique = true,
             length = 6
     )
@@ -33,7 +31,6 @@ public class Event {
     private String name;
 
     @Column(
-            nullable = true,
             length = 500
     )
     private String description;

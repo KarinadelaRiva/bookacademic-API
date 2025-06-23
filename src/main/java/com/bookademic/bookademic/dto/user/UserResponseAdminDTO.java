@@ -6,9 +6,6 @@ import com.bookademic.bookademic.dto.request.RequestResponseResumeDTO;
 import com.bookademic.bookademic.dto.reservation.ReservationResponseResumeDTO;
 import com.bookademic.bookademic.dto.role.RoleResponseResumeDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;

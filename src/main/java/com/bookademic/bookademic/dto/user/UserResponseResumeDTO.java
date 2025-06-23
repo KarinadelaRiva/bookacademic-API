@@ -1,11 +1,8 @@
 package com.bookademic.bookademic.dto.user;
 
-import com.bookademic.bookademic.dto.classGroup.ClassGroupResponseResumeDTO;
-import com.bookademic.bookademic.dto.event.EventResponseResumeDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
-import java.util.List;
 
 @Data
 @AllArgsConstructor

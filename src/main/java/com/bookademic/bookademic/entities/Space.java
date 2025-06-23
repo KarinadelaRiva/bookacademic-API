@@ -24,7 +24,6 @@ public abstract class Space {
     Long id;
 
     @Column(
-            nullable = true,
             unique = true,
             length = 6
     )
