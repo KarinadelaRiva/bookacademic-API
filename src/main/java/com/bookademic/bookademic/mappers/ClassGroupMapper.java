@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClassGroupMapper {
 
-    public ClassGroupResponseAdminDTO toAdminDTO(ClassGroup entity) {
+    public ClassGroupResponseAdminDTO toResponseAdminDTO(ClassGroup entity) {
         return ClassGroupResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
@@ -25,7 +25,7 @@ public class ClassGroupMapper {
                 .build();
     }
 
-    public ClassGroupResponseUserDTO toUserDTO(ClassGroup entity) {
+    public ClassGroupResponseUserDTO toResponseUserDTO(ClassGroup entity) {
         return ClassGroupResponseUserDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())

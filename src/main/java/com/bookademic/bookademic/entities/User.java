@@ -1,6 +1,5 @@
 package com.bookademic.bookademic.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -72,6 +71,13 @@ public class User {
             fetch = FetchType.LAZY
     )
     private List<ClassGroup> classGroups;
+
+    @OneToMany(
+            mappedBy = "organizer",
+            fetch = FetchType.LAZY
+    )
+    @JsonManagedReference
+    private List<Event> events;
 
     @OneToMany(
             mappedBy = "requester",

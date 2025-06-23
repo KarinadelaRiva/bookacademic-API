@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @ToString
 @Builder
-public abstract class ReservationResponseResumeDTO {
+public class ReservationResponseResumeDTO {
 
     @Schema(
             description = "Unique identifier of the reservation",
@@ -57,4 +57,14 @@ public abstract class ReservationResponseResumeDTO {
             example = "{ \"id\": 15, \"code\": \"MD0001\" ,\"name\": \"Conference Room A\"}"
     )
     private SpaceResponseResumeDTO space;
+
+    @Schema(
+            description = "Name of the class or event associated with the reservation"
+    )
+    private String classOrEventName;
+
+    @Schema(
+            description = "Name of the user responsible for the class or event"
+    )
+    private String classOrEventResponsibleName;
 }

@@ -4,6 +4,7 @@ import com.bookademic.bookademic.dto.space.SpaceResponseResumeDTO;
 import com.bookademic.bookademic.dto.user.UserResponseResumeDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Builder
+@SuperBuilder
 public abstract class ReservationResponseDTO {
 
     @Schema(

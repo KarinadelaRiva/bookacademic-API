@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpaceMapper {
 
-    public SpaceResponseAdminDTO toAdminDTO(Space entity) {
+    public SpaceResponseAdminDTO toResponseAdminDTO(Space entity) {
         String type = entity.getClass().getSimpleName();
         switch (entity){
             case Lab lab -> {
@@ -76,11 +76,11 @@ public class SpaceMapper {
                         .isActive(classroom.getActive())
                         .build();
             }
-            default -> throw new IllegalArgumentException("Tipo de espacio desconocido");
+            default -> throw new IllegalArgumentException("Unsupported request type: " + entity.getClass().getSimpleName());
         }
     }
 
-    public SpaceResponseUserDTO toUserDTO(Space entity) {
+    public SpaceResponseUserDTO toResponseUserDTO(Space entity) {
         String type = entity.getClass().getSimpleName();
         return switch (entity) {
             case Lab lab -> LabResponseUserDTO.builder()
@@ -119,7 +119,7 @@ public class SpaceMapper {
                     .hasProjector(classroom.getHasProjector())
                     .hasTV(classroom.getHasTV())
                     .build();
-            default -> throw new IllegalArgumentException("Tipo de espacio desconocido");
+            default -> throw new IllegalArgumentException("Unsupported space type: " + entity.getClass().getSimpleName());
         };
     }
 
@@ -172,7 +172,8 @@ public class SpaceMapper {
                     .hasTV(classroomDto.getHasTV())
                     .active(true)
                     .build();
-            case null, default -> throw new IllegalArgumentException("Tipo de espacio desconocido");
+            default -> throw new IllegalArgumentException("Unsupported space type: " + dto.getClass().getSimpleName());
+
         };
     }
 

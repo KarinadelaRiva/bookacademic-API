@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventMapper {
 
-    public EventResponseAdminDTO toAdminDTO(Event entity) {
+    public EventResponseAdminDTO toResponseAdminDTO(Event entity) {
         return EventResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
@@ -24,7 +24,7 @@ public class EventMapper {
                 .build();
     }
 
-    public EventResponseUserDTO toUserDTO(Event entity) {
+    public EventResponseUserDTO toResponseUserDTO(Event entity) {
         return EventResponseUserDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())

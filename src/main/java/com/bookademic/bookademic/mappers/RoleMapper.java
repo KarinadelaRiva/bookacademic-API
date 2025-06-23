@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RoleMapper {
-    public RoleResponseAdminDTO toAdminDTO(Role entity) {
+    public RoleResponseAdminDTO toResponseAdminDTO(Role entity) {
         return RoleResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())

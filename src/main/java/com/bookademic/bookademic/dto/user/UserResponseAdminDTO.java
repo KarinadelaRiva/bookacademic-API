@@ -48,7 +48,7 @@ public class UserResponseAdminDTO {
             description = "Indicates if the user is active",
             example = "true"
     )
-    private Boolean active;
+    private Boolean isActive;
 
     @Schema(
             description = "List of roles assigned to the user",

@@ -22,7 +22,7 @@ public class SubjectMapper {
         this.degreeProgramMapper = degreeProgramMapper;
     }
 
-    public SubjectResponseAdminDTO toAdminDTO(Subject entity){
+    public SubjectResponseAdminDTO toResponseAdminDTO(Subject entity){
         return SubjectResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
@@ -36,7 +36,7 @@ public class SubjectMapper {
                 .build();
     }
 
-    public SubjectResponseUserDTO toUserDTO(Subject entity){
+    public SubjectResponseUserDTO toResponseUserDTO(Subject entity){
         return SubjectResponseUserDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())

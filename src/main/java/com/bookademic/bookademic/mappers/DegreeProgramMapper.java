@@ -21,7 +21,7 @@ public class DegreeProgramMapper {
         this.subjectMapper = subjectMapper;
     }
 
-    public DegreeProgramResponseAdminDTO toAdminDto(DegreeProgram entity){
+    public DegreeProgramResponseAdminDTO toResponseAdminDto(DegreeProgram entity){
         return DegreeProgramResponseAdminDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
@@ -33,7 +33,7 @@ public class DegreeProgramMapper {
                 .build();
     }
 
-    public DegreeProgramResponseUserDTO toUserDto(DegreeProgram entity){
+    public DegreeProgramResponseUserDTO toResponseUserDto(DegreeProgram entity){
         return DegreeProgramResponseUserDTO.builder()
                 .id(entity.getId())
                 .code(entity.getCode())
