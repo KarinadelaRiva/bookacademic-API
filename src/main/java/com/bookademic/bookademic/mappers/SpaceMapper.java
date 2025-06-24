@@ -1,19 +1,23 @@
 package com.bookademic.bookademic.mappers;
 
-import com.bookademic.bookademic.dto.space.*;
-import com.bookademic.bookademic.dto.space.classroom.ClassroomCreateDTO;
-import com.bookademic.bookademic.dto.space.classroom.ClassroomResponseAdminDTO;
-import com.bookademic.bookademic.dto.space.classroom.ClassroomResponseUserDTO;
-import com.bookademic.bookademic.dto.space.lab.LabCreateDTO;
-import com.bookademic.bookademic.dto.space.lab.LabResponseAdminDTO;
-import com.bookademic.bookademic.dto.space.lab.LabResponseUserDTO;
-import com.bookademic.bookademic.dto.space.multipurposeRoom.MultipurposeRoomCreateDTO;
-import com.bookademic.bookademic.dto.space.multipurposeRoom.MultipurposeRoomResponseAdminDTO;
-import com.bookademic.bookademic.dto.space.multipurposeRoom.MultipurposeRoomResponseUserDTO;
-import com.bookademic.bookademic.dto.space.workshop.WorkshopCreateDTO;
-import com.bookademic.bookademic.dto.space.workshop.WorkshopResponseAdminDTO;
-import com.bookademic.bookademic.dto.space.workshop.WorkshopResponseUserDTO;
-import com.bookademic.bookademic.entities.*;
+import com.bookademic.bookademic.domain.dto.space.SpaceCreateDTO;
+import com.bookademic.bookademic.domain.dto.space.SpaceResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.space.SpaceResponseResumeDTO;
+import com.bookademic.bookademic.domain.dto.space.SpaceResponseUserDTO;
+import com.bookademic.bookademic.domain.entities.*;
+import com.bookademic.bookademic.domain.dto.space.classroom.ClassroomCreateDTO;
+import com.bookademic.bookademic.domain.dto.space.classroom.ClassroomResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.space.classroom.ClassroomResponseUserDTO;
+import com.bookademic.bookademic.domain.dto.space.lab.LabCreateDTO;
+import com.bookademic.bookademic.domain.dto.space.lab.LabResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.space.lab.LabResponseUserDTO;
+import com.bookademic.bookademic.domain.dto.space.multipurposeRoom.MultipurposeRoomCreateDTO;
+import com.bookademic.bookademic.domain.dto.space.multipurposeRoom.MultipurposeRoomResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.space.multipurposeRoom.MultipurposeRoomResponseUserDTO;
+import com.bookademic.bookademic.domain.dto.space.workshop.WorkshopCreateDTO;
+import com.bookademic.bookademic.domain.dto.space.workshop.WorkshopResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.space.workshop.WorkshopResponseUserDTO;
+import com.bookademic.bookademic.exceptions.domainExceptions.UnsupportedSpaceTypeException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -76,7 +80,7 @@ public class SpaceMapper {
                         .isActive(classroom.getActive())
                         .build();
             }
-            default -> throw new IllegalArgumentException("Unsupported request type: " + entity.getClass().getSimpleName());
+            default -> throw new UnsupportedSpaceTypeException(entity.getClass().getSimpleName());
         }
     }
 
@@ -119,7 +123,7 @@ public class SpaceMapper {
                     .hasProjector(classroom.getHasProjector())
                     .hasTV(classroom.getHasTV())
                     .build();
-            default -> throw new IllegalArgumentException("Unsupported space type: " + entity.getClass().getSimpleName());
+            default -> throw new UnsupportedSpaceTypeException(entity.getClass().getSimpleName());
         };
     }
 
@@ -172,7 +176,7 @@ public class SpaceMapper {
                     .hasTV(classroomDto.getHasTV())
                     .active(true)
                     .build();
-            default -> throw new IllegalArgumentException("Unsupported space type: " + dto.getClass().getSimpleName());
+            default -> throw new UnsupportedSpaceTypeException(dto.getClass().getSimpleName());
 
         };
     }

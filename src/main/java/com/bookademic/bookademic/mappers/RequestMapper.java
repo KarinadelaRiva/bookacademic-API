@@ -1,14 +1,15 @@
 package com.bookademic.bookademic.mappers;
 
-import com.bookademic.bookademic.dto.request.ClassRequest.ClassRequestCreateDTO;
-import com.bookademic.bookademic.dto.request.ClassRequest.ClassRequestResponseDTO;
-import com.bookademic.bookademic.dto.request.EventRequest.EventRequestCreateDTO;
-import com.bookademic.bookademic.dto.request.EventRequest.EventRequestResponseDTO;
-import com.bookademic.bookademic.dto.request.RequestCreateDTO;
-import com.bookademic.bookademic.dto.request.RequestResponseDTO;
-import com.bookademic.bookademic.dto.request.RequestResponseResumeDTO;
-import com.bookademic.bookademic.entities.*;
-import com.bookademic.bookademic.enums.RequestState;
+import com.bookademic.bookademic.domain.dto.request.ClassRequest.ClassRequestCreateDTO;
+import com.bookademic.bookademic.domain.dto.request.ClassRequest.ClassRequestResponseDTO;
+import com.bookademic.bookademic.domain.dto.request.EventRequest.EventRequestCreateDTO;
+import com.bookademic.bookademic.domain.dto.request.EventRequest.EventRequestResponseDTO;
+import com.bookademic.bookademic.domain.dto.request.RequestCreateDTO;
+import com.bookademic.bookademic.domain.dto.request.RequestResponseDTO;
+import com.bookademic.bookademic.domain.dto.request.RequestResponseResumeDTO;
+import com.bookademic.bookademic.domain.entities.*;
+import com.bookademic.bookademic.domain.enums.RequestState;
+import com.bookademic.bookademic.exceptions.domainExceptions.UnsupportedRequestTypeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -74,7 +75,7 @@ public class RequestMapper {
                         .event(eventMapper.toResumeDTO(eventRequest.getEvent()))
                         .build();
             }
-            default -> throw new IllegalArgumentException("Unsupported request type: " + entity.getClass().getSimpleName());
+            default -> throw new UnsupportedRequestTypeException(entity.getClass().getSimpleName());
         }
     }
 
@@ -123,7 +124,7 @@ public class RequestMapper {
                     .requesterComment(eventRequest.getRequesterComment())
                     .event(event)
                     .build();
-            default -> throw new IllegalArgumentException("Unsupported request type: " + dto.getClass().getSimpleName());
+            default -> throw new UnsupportedRequestTypeException(dto.getClass().getSimpleName());
         };
     }
 }

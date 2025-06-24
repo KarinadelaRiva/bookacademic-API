@@ -1,11 +1,11 @@
 package com.bookademic.bookademic.mappers;
 
-import com.bookademic.bookademic.dto.event.EventCreateDTO;
-import com.bookademic.bookademic.dto.event.EventResponseAdminDTO;
-import com.bookademic.bookademic.dto.event.EventResponseResumeDTO;
-import com.bookademic.bookademic.dto.event.EventResponseUserDTO;
-import com.bookademic.bookademic.entities.Event;
-import com.bookademic.bookademic.entities.User;
+import com.bookademic.bookademic.domain.dto.event.EventCreateDTO;
+import com.bookademic.bookademic.domain.dto.event.EventResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.event.EventResponseResumeDTO;
+import com.bookademic.bookademic.domain.dto.event.EventResponseUserDTO;
+import com.bookademic.bookademic.domain.entities.Event;
+import com.bookademic.bookademic.domain.entities.User;
 import org.springframework.stereotype.Component;
 
 @Component

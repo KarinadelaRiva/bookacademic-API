@@ -1,11 +1,11 @@
 package com.bookademic.bookademic.mappers;
 
-import com.bookademic.bookademic.dto.subject.SubjectCreateDTO;
-import com.bookademic.bookademic.dto.subject.SubjectResponseAdminDTO;
-import com.bookademic.bookademic.dto.subject.SubjectResponseResumeDTO;
-import com.bookademic.bookademic.dto.subject.SubjectResponseUserDTO;
-import com.bookademic.bookademic.entities.DegreeProgram;
-import com.bookademic.bookademic.entities.Subject;
+import com.bookademic.bookademic.domain.dto.subject.SubjectCreateDTO;
+import com.bookademic.bookademic.domain.dto.subject.SubjectResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.subject.SubjectResponseResumeDTO;
+import com.bookademic.bookademic.domain.dto.subject.SubjectResponseUserDTO;
+import com.bookademic.bookademic.domain.entities.DegreeProgram;
+import com.bookademic.bookademic.domain.entities.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;

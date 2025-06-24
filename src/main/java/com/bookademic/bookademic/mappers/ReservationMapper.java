@@ -1,13 +1,14 @@
 package com.bookademic.bookademic.mappers;
 
-import com.bookademic.bookademic.dto.reservation.ClassReservation.ClassReservationCreateDTO;
-import com.bookademic.bookademic.dto.reservation.ClassReservation.ClassReservationResponseDTO;
-import com.bookademic.bookademic.dto.reservation.EventReservation.EventReservationCreateDTO;
-import com.bookademic.bookademic.dto.reservation.EventReservation.EventReservationResponseDTO;
-import com.bookademic.bookademic.dto.reservation.ReservationCreateDTO;
-import com.bookademic.bookademic.dto.reservation.ReservationResponseDTO;
-import com.bookademic.bookademic.dto.reservation.ReservationResponseResumeDTO;
-import com.bookademic.bookademic.entities.*;
+import com.bookademic.bookademic.domain.dto.reservation.ClassReservation.ClassReservationCreateDTO;
+import com.bookademic.bookademic.domain.dto.reservation.ClassReservation.ClassReservationResponseDTO;
+import com.bookademic.bookademic.domain.dto.reservation.EventReservation.EventReservationCreateDTO;
+import com.bookademic.bookademic.domain.dto.reservation.EventReservation.EventReservationResponseDTO;
+import com.bookademic.bookademic.domain.dto.reservation.ReservationCreateDTO;
+import com.bookademic.bookademic.domain.dto.reservation.ReservationResponseDTO;
+import com.bookademic.bookademic.domain.dto.reservation.ReservationResponseResumeDTO;
+import com.bookademic.bookademic.domain.entities.*;
+import com.bookademic.bookademic.exceptions.domainExceptions.UnsupportedReservationTypeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -58,7 +59,7 @@ public class ReservationMapper {
                         .event(eventMapper.toResumeDTO(eventReservation.getEvent()))
                         .build();
             }
-            default -> throw new IllegalArgumentException("Unknown reservation type: " + entity.getClass().getSimpleName());
+            default -> throw new UnsupportedReservationTypeException(entity.getClass().getSimpleName());
         }
     }
 
@@ -106,7 +107,7 @@ public class ReservationMapper {
                     .requester(requester)
                     .event(event)
                     .build();
-            default -> throw new IllegalArgumentException("Unknown reservation type: " + dto.getClass().getSimpleName());
+            default -> throw new UnsupportedReservationTypeException(dto.getClass().getSimpleName());
         };
     }
 

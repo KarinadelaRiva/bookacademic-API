@@ -1,12 +1,12 @@
 package com.bookademic.bookademic.mappers;
 
-import com.bookademic.bookademic.dto.classGroup.ClassGroupCreateDTO;
-import com.bookademic.bookademic.dto.classGroup.ClassGroupResponseAdminDTO;
-import com.bookademic.bookademic.dto.classGroup.ClassGroupResponseResumeDTO;
-import com.bookademic.bookademic.dto.classGroup.ClassGroupResponseUserDTO;
-import com.bookademic.bookademic.entities.ClassGroup;
-import com.bookademic.bookademic.entities.Subject;
-import com.bookademic.bookademic.entities.User;
+import com.bookademic.bookademic.domain.dto.classGroup.ClassGroupCreateDTO;
+import com.bookademic.bookademic.domain.dto.classGroup.ClassGroupResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.classGroup.ClassGroupResponseResumeDTO;
+import com.bookademic.bookademic.domain.dto.classGroup.ClassGroupResponseUserDTO;
+import com.bookademic.bookademic.domain.entities.ClassGroup;
+import com.bookademic.bookademic.domain.entities.Subject;
+import com.bookademic.bookademic.domain.entities.User;
 import org.springframework.stereotype.Component;
 
 @Component

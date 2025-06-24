@@ -1,11 +1,11 @@
 package com.bookademic.bookademic.mappers;
 
-import com.bookademic.bookademic.dto.degreeProgram.DegreeProgramCreateDTO;
-import com.bookademic.bookademic.dto.degreeProgram.DegreeProgramResponseAdminDTO;
-import com.bookademic.bookademic.dto.degreeProgram.DegreeProgramResponseResumeDTO;
-import com.bookademic.bookademic.dto.degreeProgram.DegreeProgramResponseUserDTO;
-import com.bookademic.bookademic.entities.DegreeProgram;
-import com.bookademic.bookademic.entities.Subject;
+import com.bookademic.bookademic.domain.dto.degreeProgram.DegreeProgramCreateDTO;
+import com.bookademic.bookademic.domain.dto.degreeProgram.DegreeProgramResponseAdminDTO;
+import com.bookademic.bookademic.domain.dto.degreeProgram.DegreeProgramResponseResumeDTO;
+import com.bookademic.bookademic.domain.dto.degreeProgram.DegreeProgramResponseUserDTO;
+import com.bookademic.bookademic.domain.entities.DegreeProgram;
+import com.bookademic.bookademic.domain.entities.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
