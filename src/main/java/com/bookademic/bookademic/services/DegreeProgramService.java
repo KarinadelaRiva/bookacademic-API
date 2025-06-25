@@ -13,6 +13,7 @@ import com.bookademic.bookademic.repositories.DegreeProgramRepository;
 import com.bookademic.bookademic.services.interfaces.IService;
 import com.bookademic.bookademic.services.interfaces.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,6 +34,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         this.subjectService = subjectService;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public DegreeProgram create(DegreeProgramCreateDTO degreeProgramCreateDTO) {
         Set<Long> seenIds = new HashSet<>();
         Set<String> seenCodes = new HashSet<>();
@@ -62,16 +64,19 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         return degreeProgramRepository.save(degreeProgram);
     }
 
+    @Transactional(readOnly = true)
     public DegreeProgram findEntityById(Long id) {
         return degreeProgramRepository.findById(id)
                 .orElseThrow(() -> new DegreeProgramNotFoundException("Degree Program not found with ID: " + id));
     }
 
+    @Transactional(readOnly = true)
     public DegreeProgramResponseAdminDTO findByIdAdminDTO(Long id) {
         DegreeProgram degreeProgram = findEntityById(id);
         return degreeProgramMapper.toResponseAdminDto(degreeProgram);
     }
 
+    @Transactional(readOnly = true)
     public DegreeProgramResponseUserDTO findByIdUserDTO(Long id) {
         DegreeProgram degreeProgram = findEntityById(id);
         if (!degreeProgram.getActive()) {
@@ -80,16 +85,19 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         return degreeProgramMapper.toResponseUserDto(degreeProgram);
     }
 
+    @Transactional(readOnly = true)
     public DegreeProgram findByCode(String code) {
         return degreeProgramRepository.findByCode(code)
                 .orElseThrow(() -> new DegreeProgramNotFoundException("Degree Program not found with code: " + code));
     }
 
+    @Transactional(readOnly = true)
     public DegreeProgramResponseAdminDTO findByCodeAdminDTO(String code) {
         DegreeProgram degreeProgram = findByCode(code);
         return degreeProgramMapper.toResponseAdminDto(degreeProgram);
     }
 
+    @Transactional(readOnly = true)
     public DegreeProgramResponseUserDTO findByCodeUserDTO(String code) {
         DegreeProgram degreeProgram = findByCode(code);
         if (!degreeProgram.getActive()) {
@@ -98,10 +106,12 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         return degreeProgramMapper.toResponseUserDto(degreeProgram);
     }
 
+    @Transactional(readOnly = true)
     public List<DegreeProgram> findAll() {
         return degreeProgramRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public List<DegreeProgramResponseAdminDTO> findAllAdminDTO() {
         List<DegreeProgram> degreePrograms = findAll();
         return degreePrograms.stream()
@@ -109,6 +119,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     public List<DegreeProgramResponseUserDTO> findAllUserDTO() {
         List<DegreeProgram> degreePrograms = findAll();
         return degreePrograms.stream()
@@ -117,6 +128,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     public List<DegreeProgram> searchByName(String partialName) {
         List<DegreeProgram> degreePrograms = degreeProgramRepository.findByNombreContainingIgnoreCase(partialName);
 
@@ -127,12 +139,14 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         return degreePrograms;
     }
 
+    @Transactional(readOnly = true)
     public List<DegreeProgramResponseAdminDTO> searchByNameAdminDTO(String partialName) {
         return searchByName(partialName).stream()
                 .map(degreeProgramMapper::toResponseAdminDto)
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     public List<DegreeProgramResponseUserDTO> searchByNameUserDTO(String partialName) {
         return searchByName(partialName).stream()
                 .filter(DegreeProgram::getActive)
@@ -140,6 +154,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
                 .toList();
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public DegreeProgram update(DegreeProgramUpdateDTO degreeProgramUpdateDTO) {
 
         DegreeProgram existingDegreeProgram;
@@ -164,6 +179,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         return degreeProgramRepository.save(existingDegreeProgram);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public DegreeProgram deleteById(Long id) {
         if (!degreeProgramRepository.existsById(id)) {
             throw new DegreeProgramNotFoundException("Degree Program not found with ID: " + id);
@@ -180,6 +196,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         return degreeProgramRepository.save(dp);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public DegreeProgram reactivateById(Long id) {
         DegreeProgram dp = findEntityById(id);
         if (dp.getActive()) {
@@ -190,6 +207,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         return degreeProgramRepository.save(dp);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public DegreeProgram assignSubjectsToDegreeProgram(Long degreeProgramId, List<Long> subjectIds, List<String> subjectsCodes) {
         DegreeProgram dp = findEntityById(degreeProgramId);
         List<Subject> currentSubjects = dp.getSubjects();
@@ -215,6 +233,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         return degreeProgramRepository.save(dp);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public DegreeProgram removeSubjectsFromDegreeProgram(Long degreeProgramId, List<Long> subjectIds, List<String> subjectsCodes) {
         DegreeProgram dp = findEntityById(degreeProgramId);
         Set<Subject> currentSubjects = new HashSet<>(dp.getSubjects());
