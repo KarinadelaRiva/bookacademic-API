@@ -11,7 +11,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = {"id", "code"})
+@EqualsAndHashCode(of = {"id"})
 @Builder
 @Entity
 public class Subject {

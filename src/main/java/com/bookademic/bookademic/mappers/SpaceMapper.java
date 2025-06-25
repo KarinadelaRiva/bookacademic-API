@@ -17,7 +17,7 @@ import com.bookademic.bookademic.domain.dto.space.multipurposeRoom.MultipurposeR
 import com.bookademic.bookademic.domain.dto.space.workshop.WorkshopCreateDTO;
 import com.bookademic.bookademic.domain.dto.space.workshop.WorkshopResponseAdminDTO;
 import com.bookademic.bookademic.domain.dto.space.workshop.WorkshopResponseUserDTO;
-import com.bookademic.bookademic.exceptions.domainExceptions.UnsupportedSpaceTypeException;
+import com.bookademic.bookademic.exceptions.domainExceptions.unsupportedType.UnsupportedSpaceTypeException;
 import org.springframework.stereotype.Component;
 
 @Component

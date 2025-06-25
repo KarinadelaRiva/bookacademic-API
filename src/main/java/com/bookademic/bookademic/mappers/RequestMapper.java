@@ -9,7 +9,7 @@ import com.bookademic.bookademic.domain.dto.request.RequestResponseDTO;
 import com.bookademic.bookademic.domain.dto.request.RequestResponseResumeDTO;
 import com.bookademic.bookademic.domain.entities.*;
 import com.bookademic.bookademic.domain.enums.RequestState;
-import com.bookademic.bookademic.exceptions.domainExceptions.UnsupportedRequestTypeException;
+import com.bookademic.bookademic.exceptions.domainExceptions.unsupportedType.UnsupportedRequestTypeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

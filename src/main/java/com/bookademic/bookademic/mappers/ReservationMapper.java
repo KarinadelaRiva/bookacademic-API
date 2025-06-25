@@ -8,7 +8,7 @@ import com.bookademic.bookademic.domain.dto.reservation.ReservationCreateDTO;
 import com.bookademic.bookademic.domain.dto.reservation.ReservationResponseDTO;
 import com.bookademic.bookademic.domain.dto.reservation.ReservationResponseResumeDTO;
 import com.bookademic.bookademic.domain.entities.*;
-import com.bookademic.bookademic.exceptions.domainExceptions.UnsupportedReservationTypeException;
+import com.bookademic.bookademic.exceptions.domainExceptions.unsupportedType.UnsupportedReservationTypeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

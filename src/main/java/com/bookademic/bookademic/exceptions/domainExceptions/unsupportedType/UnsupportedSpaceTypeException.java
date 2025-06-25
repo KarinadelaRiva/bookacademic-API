@@ -1,4 +1,4 @@
-package com.bookademic.bookademic.exceptions.domainExceptions;
+package com.bookademic.bookademic.exceptions.domainExceptions.unsupportedType;
 
 public class UnsupportedSpaceTypeException extends UnsupportedTypeException {
     public UnsupportedSpaceTypeException(String typeName) {
