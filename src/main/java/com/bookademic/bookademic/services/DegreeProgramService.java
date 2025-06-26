@@ -13,6 +13,7 @@ import com.bookademic.bookademic.repositories.DegreeProgramRepository;
 import com.bookademic.bookademic.services.interfaces.IService;
 import com.bookademic.bookademic.services.interfaces.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class DegreeProgramService implements IService<DegreeProgram> {
     private final DegreeProgramRepository degreeProgramRepository;
     private final DegreeProgramMapper degreeProgramMapper;
@@ -130,7 +132,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
 
     @Transactional(readOnly = true)
     public List<DegreeProgram> searchByName(String partialName) {
-        List<DegreeProgram> degreePrograms = degreeProgramRepository.findByNombreContainingIgnoreCase(partialName);
+        List<DegreeProgram> degreePrograms = degreeProgramRepository.findByNameContainingIgnoreCase(partialName);
 
         if (degreePrograms.isEmpty()) {
             throw new DegreeProgramNotFoundException("No Degree Programs found with name containing: " + partialName);
@@ -174,18 +176,23 @@ public class DegreeProgramService implements IService<DegreeProgram> {
         if(existingDegreeProgram.getCode() == null) {
             existingDegreeProgram.setCode(degreeProgramUpdateDTO.getCode());
         }
-        existingDegreeProgram.setName(degreeProgramUpdateDTO.getName());
+
+        if(degreeProgramUpdateDTO.getName() != null) {
+            existingDegreeProgram.setName(degreeProgramUpdateDTO.getName());
+        }
 
         return degreeProgramRepository.save(existingDegreeProgram);
     }
 
     @Transactional(rollbackFor = Exception.class)
     public DegreeProgram deleteById(Long id) {
-        if (!degreeProgramRepository.existsById(id)) {
-            throw new DegreeProgramNotFoundException("Degree Program not found with ID: " + id);
-        }
 
         DegreeProgram dp = findEntityById(id);
+
+        if (!dp.getActive()) {
+            throw new ResourceConflictException("Degree Program with ID: " + id + " is already inactive.");
+        }
+
         List<Long> subjectIds = dp.getSubjects().stream()
                 .map(Subject::getId)
                 .toList();
@@ -199,6 +206,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
     @Transactional(rollbackFor = Exception.class)
     public DegreeProgram reactivateById(Long id) {
         DegreeProgram dp = findEntityById(id);
+
         if (dp.getActive()) {
             throw new ResourceConflictException("Degree Program with ID: " + id + " is already active.");
         }
@@ -277,6 +285,17 @@ public class DegreeProgramService implements IService<DegreeProgram> {
             }
         });
     }
+
+    @Transactional
+    public void removeSubjectFromAllDegreePrograms(Subject subject) {
+        List<DegreeProgram> degreePrograms = subject.getDegreePrograms();
+
+        for (DegreeProgram degreeProgram : degreePrograms) {
+            degreeProgram.getSubjects().remove(subject);
+        }
+        degreeProgramRepository.saveAll(degreePrograms);
+    }
+
 
 }
 
