@@ -55,17 +55,6 @@ public class User {
     )
     private UserCredential userCredential;
 
-    @ManyToMany(
-            fetch = FetchType.LAZY
-    )
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    @JsonManagedReference
-    private List<Role> roles;
-
     @OneToMany(
             mappedBy = "professor",
             fetch = FetchType.LAZY

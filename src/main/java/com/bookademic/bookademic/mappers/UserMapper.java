@@ -42,7 +42,7 @@ public class UserMapper {
                 .lastName(entity.getLastName())
                 .email(entity.getEmail())
                 .isActive(entity.getActive())
-                .roles(entity.getRoles().stream()
+                .roles(entity.getUserCredential().getRoles().stream()
                         .map(roleMapper::toResumeDTO)
                         .toList())
                 .classGroups(entity.getClassGroups().stream()
@@ -66,7 +66,7 @@ public class UserMapper {
                 .lastName(entity.getLastName())
                 .email(entity.getEmail())
                 .username(entity.getUserCredential().getUsername())
-                .roles(entity.getRoles().stream()
+                .roles(entity.getUserCredential().getRoles().stream()
                         .map(roleMapper::toResumeDTO)
                         .toList())
                 .classGroups(entity.getClassGroups().stream()
@@ -93,14 +93,13 @@ public class UserMapper {
                 .build();
     }
 
-    public User toEntity(UserCreateDTO dto, UserCredential userCredential, List<Role> roles) {
+    public User toEntity(UserCreateDTO dto, UserCredential userCredential) {
         return User.builder()
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
                 .email(dto.getEmail())
                 .active(true)
                 .userCredential(userCredential)
-                .roles(roles != null ? roles : List.of())
                 .build();
     }
 }

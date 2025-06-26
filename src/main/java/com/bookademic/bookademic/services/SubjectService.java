@@ -1,4 +1,4 @@
-package com.bookademic.bookademic.services.interfaces;
+package com.bookademic.bookademic.services;
 
 import com.bookademic.bookademic.domain.dto.subject.SubjectCreateDTO;
 import com.bookademic.bookademic.domain.dto.subject.SubjectResponseAdminDTO;
@@ -10,7 +10,7 @@ import com.bookademic.bookademic.exceptions.domainExceptions.resourceNotFound.Su
 import com.bookademic.bookademic.exceptions.domainExceptions.resourseConflict.ResourceConflictException;
 import com.bookademic.bookademic.mappers.SubjectMapper;
 import com.bookademic.bookademic.repositories.SubjectRepository;
-import com.bookademic.bookademic.services.DegreeProgramService;
+import com.bookademic.bookademic.services.interfaces.IService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;

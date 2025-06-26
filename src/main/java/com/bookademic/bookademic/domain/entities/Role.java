@@ -51,6 +51,6 @@ public class Role {
             mappedBy = "roles",
             fetch = FetchType.LAZY
     )
-    private List<User> users;
+    private List<UserCredential> userCredentials;
 
 }

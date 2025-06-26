@@ -8,5 +8,4 @@ public interface IService<T> {
     List<T> findAll();
     List<T> searchByName(String partialName);
     T deleteById(Long id);
-    T reactivateById(Long id);
 }
