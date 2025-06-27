@@ -11,7 +11,6 @@ import com.bookademic.bookademic.exceptions.domainExceptions.resourseConflict.Re
 import com.bookademic.bookademic.mappers.DegreeProgramMapper;
 import com.bookademic.bookademic.repositories.DegreeProgramRepository;
 import com.bookademic.bookademic.services.interfaces.IService;
-import com.bookademic.bookademic.services.interfaces.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

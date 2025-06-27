@@ -1,9 +1,11 @@
 package com.bookademic.bookademic.mappers;
 
+import com.bookademic.bookademic.domain.dto.UserRegistrationDTO;
 import com.bookademic.bookademic.domain.dto.user.UserCreateDTO;
 import com.bookademic.bookademic.domain.dto.user.UserResponseAdminDTO;
 import com.bookademic.bookademic.domain.dto.user.UserResponseResumeDTO;
 import com.bookademic.bookademic.domain.dto.user.UserResponseUserDTO;
+import com.bookademic.bookademic.domain.dto.userCredential.UserCredentialCreateDTO;
 import com.bookademic.bookademic.domain.entities.Role;
 import com.bookademic.bookademic.domain.entities.User;
 import com.bookademic.bookademic.domain.entities.UserCredential;
@@ -93,13 +95,18 @@ public class UserMapper {
                 .build();
     }
 
-    public User toEntity(UserCreateDTO dto, UserCredential userCredential) {
+    public User toEntity(UserRegistrationDTO dto, List<Role> roles) {
         return User.builder()
-                .firstName(dto.getFirstName())
-                .lastName(dto.getLastName())
-                .email(dto.getEmail())
+                .firstName(dto.getUser().getFirstName())
+                .lastName(dto.getUser().getLastName())
+                .email(dto.getUser().getEmail())
                 .active(true)
-                .userCredential(userCredential)
+                .userCredential(UserCredential.builder()
+                        .username(dto.getCredentials().getUsername())
+                        .password(dto.getCredentials().getPassword())
+                        .roles(roles != null ? roles : List.of())
+                        .build())
                 .build();
     }
+
 }
