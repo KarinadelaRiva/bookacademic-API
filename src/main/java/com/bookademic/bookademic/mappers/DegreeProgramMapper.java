@@ -52,8 +52,8 @@ public class DegreeProgramMapper {
 
     public DegreeProgram toEntity(DegreeProgramCreateDTO dto, List<Subject> subjects) {
         return DegreeProgram.builder()
-                .code(dto.getCode())
-                .name(dto.getName())
+                .code(dto.getCode().toUpperCase())
+                .name(dto.getName().toUpperCase())
                 .active(true)
                 .subjects(subjects != null ? subjects : List.of())
                 .build();

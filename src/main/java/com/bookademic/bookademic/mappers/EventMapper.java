@@ -45,8 +45,8 @@ public class EventMapper {
 
     public Event toEntity(EventCreateDTO dto, User organizer) {
         return Event.builder()
-                .code(dto.getCode())
-                .name(dto.getName())
+                .code(dto.getCode().toUpperCase())
+                .name(dto.getName().toUpperCase())
                 .description(dto.getDescription())
                 .maxParticipants(dto.getMaxParticipants())
                 .organizer(organizer)

@@ -64,5 +64,5 @@ public class RoleCreateDTO {
             example = "[1, 2, 3]",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED
     )
-    private List<Long> users;
+    private List<Long> usersIds;
 }

@@ -88,8 +88,8 @@ public class SubjectService implements IService<Subject> {
 
     @Transactional(readOnly = true)
     public Subject findByCode(String code) {
-        return subjectRepository.findByCode(code)
-                .orElseThrow(() -> new SubjectNotFoundException("Subject not found with code: " + code));
+        return subjectRepository.findByCode(code.toUpperCase())
+                .orElseThrow(() -> new SubjectNotFoundException("Subject not found with code: " + code.toUpperCase()));
     }
 
     @Transactional(readOnly = true)
@@ -102,7 +102,7 @@ public class SubjectService implements IService<Subject> {
     public SubjectResponseUserDTO findByCodeUserDTO(String code) {
         Subject subject = findByCode(code);
         if (!subject.getActive()) {
-            throw new SubjectNotFoundException("Subject not found with code: " + code + " or it is inactive.");
+            throw new SubjectNotFoundException("Subject not found with code: " + code.toUpperCase() + " or it is inactive.");
         }
         return subjectMapper.toResponseUserDTO(subject);
     }
@@ -131,10 +131,10 @@ public class SubjectService implements IService<Subject> {
 
     @Transactional(readOnly = true)
     public List<Subject> searchByName(String partialName) {
-        List<Subject> subjects = subjectRepository.findByNameContainingIgnoreCase(partialName);
+        List<Subject> subjects = subjectRepository.findByNameContainingIgnoreCase(partialName.toUpperCase());
 
         if (subjects.isEmpty()) {
-            throw new SubjectNotFoundException("No subjects found with name containing: " + partialName);
+            throw new SubjectNotFoundException("No subjects found with name containing: " + partialName.toUpperCase());
         }
 
         return subjects;
@@ -183,20 +183,19 @@ public class SubjectService implements IService<Subject> {
     public Subject update(SubjectUpdateDTO subjectUpdateDTO){
         Subject existingSubject;
 
-        if(subjectUpdateDTO.getId() != null && subjectUpdateDTO.getCode() != null) {
+        if(subjectUpdateDTO.getId() != null && subjectUpdateDTO.getExistingCode() != null) {
             existingSubject = findEntityById(subjectUpdateDTO.getId());
         } else if (subjectUpdateDTO.getId() != null) {
             existingSubject = findEntityById(subjectUpdateDTO.getId());
-        } else if (subjectUpdateDTO.getCode() != null) {
-            existingSubject = findByCode(subjectUpdateDTO.getCode());
+        } else if (subjectUpdateDTO.getExistingCode() != null) {
+            existingSubject = findByCode(subjectUpdateDTO.getExistingCode());
         } else {
-            throw new IllegalArgumentException("Either ID or code must be provided for update.");
+            throw new ResourceConflictException("Either ID or code must be provided for update.");
         }
 
-        validateCodeUniqueness(subjectUpdateDTO.getCode(), existingSubject.getId());
-
-        if(existingSubject.getCode() == null){
-            existingSubject.setCode(subjectUpdateDTO.getCode());
+        if(subjectUpdateDTO.getNewCode() != null) {
+            validateCodeUniqueness(subjectUpdateDTO.getNewCode(), existingSubject.getId());
+            existingSubject.setCode(subjectUpdateDTO.getNewCode().toUpperCase());
         }
         if(subjectUpdateDTO.getName() != null){
             existingSubject.setName(subjectUpdateDTO.getName());
@@ -252,8 +251,8 @@ public class SubjectService implements IService<Subject> {
             return; // Do nothing if code is null or blank
         }
 
-        if(subjectRepository.existsByCode(code)) {
-            throw new ResourceConflictException("A subject with code " + code + " already exists.");
+        if(subjectRepository.existsByCode(code.toUpperCase())) {
+            throw new ResourceConflictException("A subject with code " + code.toUpperCase() + " already exists.");
         }
     }
 
@@ -262,10 +261,10 @@ public class SubjectService implements IService<Subject> {
             return; // Do nothing if code is null or blank
         }
 
-        subjectRepository.findByCode(code)
+        subjectRepository.findByCode(code.toUpperCase())
                 .ifPresent(subject -> {
                     if (!subject.getId().equals(currentId)) {
-                        throw new ResourceConflictException("A subject with code " + code + " already exists.");
+                        throw new ResourceConflictException("A subject with code " + code.toUpperCase() + " already exists.");
                     }
                 });
     }

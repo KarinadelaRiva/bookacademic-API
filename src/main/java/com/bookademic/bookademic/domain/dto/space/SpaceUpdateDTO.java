@@ -36,7 +36,18 @@ public abstract class SpaceUpdateDTO {
             regexp = "^[A-Za-z]{2}\\d{4}$",
             message = "Code must consist of two letters followed by four digits"
     )
-    private String code;
+    private String existingCode;
+
+    @Schema(
+            description = "New unique code for the space",
+            example = "SP0123",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED
+    )
+    @Pattern(
+            regexp = "^[A-Za-z]{2}\\d{4}$",
+            message = "Code must consist of two letters followed by four digits"
+    )
+    private String newCode;
 
     @Schema(
             description = "Name of the space",

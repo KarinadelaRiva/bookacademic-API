@@ -28,7 +28,18 @@ public class DegreeProgramUpdateDTO {
             regexp = "^[A-Za-z]{2}\\d{4}$",
             message = "Code must consist of two letters followed by four digits"
     )
-    private String code;
+    private String existingCode;
+
+    @Schema(
+            description = "New code for the degree program",
+            example = "CS1234",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED
+    )
+    @Pattern(
+            regexp = "^[A-Za-z]{2}\\d{4}$",
+            message = "Code must consist of two letters followed by four digits"
+    )
+    private String newCode;
 
     @Schema(
             description = "New name of the degree program",

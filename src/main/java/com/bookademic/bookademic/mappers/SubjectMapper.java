@@ -59,8 +59,8 @@ public class SubjectMapper {
 
     public Subject toEntity(SubjectCreateDTO dto, List<DegreeProgram> degreePrograms) {
         return Subject.builder()
-                .code(dto.getCode())
-                .name(dto.getName())
+                .code(dto.getCode().toUpperCase())
+                .name(dto.getName().toUpperCase())
                 .requiresLab(dto.getRequiresLab())
                 .requiresWorkshop(dto.getRequiresWorkshop())
                 .active(true)

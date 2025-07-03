@@ -97,9 +97,9 @@ public class UserMapper {
 
     public User toEntity(UserRegistrationDTO dto, List<Role> roles) {
         return User.builder()
-                .firstName(dto.getUser().getFirstName())
-                .lastName(dto.getUser().getLastName())
-                .email(dto.getUser().getEmail())
+                .firstName(dto.getUser().getFirstName().toUpperCase())
+                .lastName(dto.getUser().getLastName().toUpperCase())
+                .email(dto.getUser().getEmail().toLowerCase())
                 .active(true)
                 .userCredential(UserCredential.builder()
                         .username(dto.getCredentials().getUsername())

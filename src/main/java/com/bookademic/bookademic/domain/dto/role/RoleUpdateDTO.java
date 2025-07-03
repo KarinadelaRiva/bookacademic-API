@@ -33,7 +33,19 @@ public class RoleUpdateDTO {
             message = "Code must consist of two letters followed by four digits"
     )
     @Size(max = 6, message = "Role code cannot exceed 6 characters")
-    private String code;
+    private String existingCode;
+
+    @Schema(
+            description = "New unique code for the role",
+            example = "AD0001",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED
+    )
+    @Pattern(
+            regexp = "^[A-Za-z]{2}\\d{4}$",
+            message = "Code must consist of two letters followed by four digits"
+    )
+    @Size(max = 6, message = "Role code cannot exceed 6 characters")
+    private String newCode;
 
     @Schema(
             description = "Name of the role",

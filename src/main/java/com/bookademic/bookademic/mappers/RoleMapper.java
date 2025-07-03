@@ -27,8 +27,8 @@ public class RoleMapper {
 
     public Role toEntity(RoleCreateDTO dto) {
         return Role.builder()
-                .code(dto.getCode())
-                .name(dto.getName())
+                .code(dto.getCode().toUpperCase())
+                .name(dto.getName().toUpperCase())
                 .description(dto.getDescription())
                 .build();
     }

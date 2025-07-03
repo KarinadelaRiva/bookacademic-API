@@ -139,8 +139,8 @@ public class SpaceMapper {
     public Space toEntity(SpaceCreateDTO dto) {
         return switch (dto) {
             case LabCreateDTO labDto -> Lab.builder()
-                    .code(labDto.getCode())
-                    .name(labDto.getName())
+                    .code(labDto.getCode().toUpperCase())
+                    .name(labDto.getName().toUpperCase())
                     .capacity(labDto.getCapacity())
                     .hasProjector(labDto.getHasProjector())
                     .hasTV(labDto.getHasTV())
@@ -149,8 +149,8 @@ public class SpaceMapper {
                     .active(true)
                     .build();
             case WorkshopCreateDTO workshopDto -> Workshop.builder()
-                    .code(workshopDto.getCode())
-                    .name(workshopDto.getName())
+                    .code(workshopDto.getCode().toUpperCase())
+                    .name(workshopDto.getName().toUpperCase())
                     .capacity(workshopDto.getCapacity())
                     .hasProjector(workshopDto.getHasProjector())
                     .hasTV(workshopDto.getHasTV())
@@ -159,8 +159,8 @@ public class SpaceMapper {
                     .active(true)
                     .build();
             case MultipurposeRoomCreateDTO multiDto -> MultipurposeRoom.builder()
-                    .code(multiDto.getCode())
-                    .name(multiDto.getName())
+                    .code(multiDto.getCode().toUpperCase())
+                    .name(multiDto.getName().toUpperCase())
                     .capacity(multiDto.getCapacity())
                     .hasProjector(multiDto.getHasProjector())
                     .hasTV(multiDto.getHasTV())
@@ -169,8 +169,8 @@ public class SpaceMapper {
                     .active(true)
                     .build();
             case ClassroomCreateDTO classroomDto -> Classroom.builder()
-                    .code(classroomDto.getCode())
-                    .name(classroomDto.getName())
+                    .code(classroomDto.getCode().toUpperCase())
+                    .name(classroomDto.getName().toUpperCase())
                     .capacity(classroomDto.getCapacity())
                     .hasProjector(classroomDto.getHasProjector())
                     .hasTV(classroomDto.getHasTV())

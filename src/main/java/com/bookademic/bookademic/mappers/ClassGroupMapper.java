@@ -47,8 +47,8 @@ public class ClassGroupMapper {
 
     public ClassGroup toEntity(ClassGroupCreateDTO dto, Subject subject, User professor) {
         return ClassGroup.builder()
-                .code(dto.getCode())
-                .name(dto.getName())
+                .code(dto.getCode().toUpperCase())
+                .name(dto.getName().toUpperCase())
                 .studentCount(dto.getStudentCount())
                 .subject(subject)
                 .professor(professor)

@@ -88,8 +88,8 @@ public class DegreeProgramService implements IService<DegreeProgram> {
 
     @Transactional(readOnly = true)
     public DegreeProgram findByCode(String code) {
-        return degreeProgramRepository.findByCode(code)
-                .orElseThrow(() -> new DegreeProgramNotFoundException("Degree Program not found with code: " + code));
+        return degreeProgramRepository.findByCode(code.toUpperCase())
+                .orElseThrow(() -> new DegreeProgramNotFoundException("Degree Program not found with code: " + code.toUpperCase()));
     }
 
     @Transactional(readOnly = true)
@@ -102,7 +102,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
     public DegreeProgramResponseUserDTO findByCodeUserDTO(String code) {
         DegreeProgram degreeProgram = findByCode(code);
         if (!degreeProgram.getActive()) {
-            throw new DegreeProgramNotFoundException("Degree Program not found or inactive with code: " + code);
+            throw new DegreeProgramNotFoundException("Degree Program not found or inactive with code: " + code.toUpperCase());
         }
         return degreeProgramMapper.toResponseUserDto(degreeProgram);
     }
@@ -131,7 +131,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
 
     @Transactional(readOnly = true)
     public List<DegreeProgram> searchByName(String partialName) {
-        List<DegreeProgram> degreePrograms = degreeProgramRepository.findByNameContainingIgnoreCase(partialName);
+        List<DegreeProgram> degreePrograms = degreeProgramRepository.findByNameContainingIgnoreCase(partialName.toUpperCase());
 
         if (degreePrograms.isEmpty()) {
             throw new DegreeProgramNotFoundException("No Degree Programs found with name containing: " + partialName);
@@ -160,24 +160,23 @@ public class DegreeProgramService implements IService<DegreeProgram> {
 
         DegreeProgram existingDegreeProgram;
 
-        if(degreeProgramUpdateDTO.getId() != null && degreeProgramUpdateDTO.getCode() != null) {
+        if(degreeProgramUpdateDTO.getId() != null && degreeProgramUpdateDTO.getExistingCode() != null) {
             existingDegreeProgram = findEntityById(degreeProgramUpdateDTO.getId());
         } else if(degreeProgramUpdateDTO.getId() != null) {
             existingDegreeProgram = findEntityById(degreeProgramUpdateDTO.getId());
-        } else if(degreeProgramUpdateDTO.getCode() != null) {
-            existingDegreeProgram = findByCode(degreeProgramUpdateDTO.getCode());
+        } else if(degreeProgramUpdateDTO.getExistingCode() != null) {
+            existingDegreeProgram = findByCode(degreeProgramUpdateDTO.getExistingCode());
         } else {
             throw new ResourceConflictException("Either ID or Code must be provided for update.");
         }
 
-        validateCodeUniqueness(degreeProgramUpdateDTO.getCode(), existingDegreeProgram.getId());
-
-        if(existingDegreeProgram.getCode() == null) {
-            existingDegreeProgram.setCode(degreeProgramUpdateDTO.getCode());
+        if(degreeProgramUpdateDTO.getNewCode() != null) {
+            validateCodeUniqueness(degreeProgramUpdateDTO.getNewCode(), existingDegreeProgram.getId());
+            existingDegreeProgram.setCode(degreeProgramUpdateDTO.getNewCode().toUpperCase());
         }
 
         if(degreeProgramUpdateDTO.getName() != null) {
-            existingDegreeProgram.setName(degreeProgramUpdateDTO.getName());
+            existingDegreeProgram.setName(degreeProgramUpdateDTO.getName().toUpperCase());
         }
 
         return degreeProgramRepository.save(existingDegreeProgram);
@@ -268,7 +267,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
             return; // Do nothing if code is null or blank
         }
 
-        if (degreeProgramRepository.existsByCode(code)) {
+        if (degreeProgramRepository.existsByCode(code.toUpperCase())) {
             throw new ResourceConflictException("A Degree Program with this code already exists.");
         }
     }
@@ -278,7 +277,7 @@ public class DegreeProgramService implements IService<DegreeProgram> {
             return;
         }
 
-        degreeProgramRepository.findByCode(code).ifPresent(existing -> {
+        degreeProgramRepository.findByCode(code.toUpperCase()).ifPresent(existing -> {
             if (!existing.getId().equals(currentId)) {
                 throw new ResourceConflictException("A Degree Program with this code already exists.");
             }
